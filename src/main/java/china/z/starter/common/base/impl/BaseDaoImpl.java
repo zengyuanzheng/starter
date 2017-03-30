@@ -21,8 +21,9 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 
 
 
-    @Autowired
+    @Autowired(required = false)
     private SessionFactory sessionFactory;
+
     private Class<T> entityClass;
 
     /**

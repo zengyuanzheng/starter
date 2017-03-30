@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class UserServiceImpl implements IUserService {
 
-    @Autowired
+    @Autowired(required = false)
     private IUserDao userDao;
 
     public TUser get(String uuid) {

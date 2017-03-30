@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by sherlock on 2017-03-29.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring.xml", "classpath:spring-hibernate.xml"})
+@ContextConfiguration(locations={"classpath:spring.xml"})
 public class TUserService {
 
     @Autowired

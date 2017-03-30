@@ -44,4 +44,19 @@ public class CServiceContext {
      * 状态   冻结
      */
     public final static int STATE_NO = 0;
+
+    /**
+     * redis string key
+     */
+    public final static String KEY_PREFIX_VALUE = "db:report:value:";
+
+    /**
+     * redis set key
+     */
+    public final static String KEY_PREFIX_SET = "db:report:set:";
+
+    /**
+     * redis list key
+     */
+    public final static String KEY_PREFIX_LIST = "db:report:list:";
 }
