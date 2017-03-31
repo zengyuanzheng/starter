@@ -25,6 +25,7 @@
         <version.aspectj>1.8.10</version.aspectj>
         <version.jedis>2.3.1</version.jedis>
         <version.data.redis>1.5.0.RELEASE</version.data.redis>
+        <version.fastjson>1.1.36</version.fastjson>
     </properties>
 
     <dependencies>
@@ -76,6 +77,12 @@
             <artifactId>spring-test</artifactId>
             <version>${version.spring}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${version.spring}</version>
         </dependency>
 
         <dependency>
@@ -155,17 +162,22 @@
             <version>${version.jedis}</version>
         </dependency>
 
-       <dependency>
+        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
             <version>${version.data.redis}</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>1.6.2.RELEASE</version>
-        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${version.fastjson}</version>
+        </dependency>
 
     </dependencies>
+
+    <build>
+
+    </build>
+
 </project>

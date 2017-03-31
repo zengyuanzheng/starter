@@ -40,6 +40,8 @@
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="keySerializer" ref="stringRedisSerializer"/>
         <property name="hashKeySerializer" ref="stringRedisSerializer"/>
+        <property name="valueSerializer" ref="stringRedisSerializer"/>
+        <property name="hashValueSerializer" ref="stringRedisSerializer"/>
     </bean>
 
 </beans>

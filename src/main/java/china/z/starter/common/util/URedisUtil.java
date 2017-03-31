@@ -22,7 +22,10 @@ public class URedisUtil {
     private static final Logger LOGGER = Logger.getLogger(URedisUtil.class);
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 缓存value操作
@@ -35,9 +38,12 @@ public class URedisUtil {
     public boolean cacheValue(String k, String v, long time) {
         String key = CServiceContext.KEY_PREFIX_VALUE + k;
         try {
-            ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
+            ValueOperations<String, String> valueOps = stringRedisTemplate.opsForValue();
             valueOps.set(key, v);
-            if (time > 0) redisTemplate.expire(key, time, TimeUnit.SECONDS);
+            if (time > 0){
+                stringRedisTemplate.expire(key, time, TimeUnit.SECONDS);
+            }
+
             return true;
         } catch (Throwable t) {
             LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);
@@ -356,4 +362,5 @@ public class URedisUtil {
         }
         return false;
     }
+
 }
