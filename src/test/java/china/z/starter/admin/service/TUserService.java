@@ -23,6 +23,14 @@ public class TUserService {
     @Autowired
     private IUserService userService;
 
+    public IUserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(IUserService userService) {
+        this.userService = userService;
+    }
+
     @Test
     public void get(){
         TUser user = userService.get("1e18b539a94145c2867f50909aa23072");

@@ -2,8 +2,7 @@ package china.z.starter.common.util;
 
 import china.z.starter.common.context.CServiceContext;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Repository;
@@ -19,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Repository("redisUtil")
 public class URedisUtil {
 
-    private static final Logger LOGGER = Logger.getLogger(URedisUtil.class);
+   /* private static final Logger LOGGER=Logger.getLogger(URedisUtil.class);*/
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -46,7 +45,7 @@ public class URedisUtil {
 
             return true;
         } catch (Throwable t) {
-            LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);
+            /*LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);*/
         }
         return false;
     }
@@ -96,7 +95,7 @@ public class URedisUtil {
         try {
             return redisTemplate.hasKey(key);
         } catch (Throwable t) {
-            LOGGER.error("判断缓存存在失败key[" + key + ", error[" + t + "]");
+            /*LOGGER.error("判断缓存存在失败key[" + key + ", error[" + t + "]");*/
         }
         return false;
     }
@@ -112,7 +111,7 @@ public class URedisUtil {
             ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
             return valueOps.get(CServiceContext.KEY_PREFIX_VALUE + k);
         } catch (Throwable t) {
-            LOGGER.error("获取缓存失败key[" + CServiceContext.KEY_PREFIX_VALUE + k + ", error[" + t + "]");
+           /* LOGGER.error("获取缓存失败key[" + CServiceContext.KEY_PREFIX_VALUE + k + ", error[" + t + "]");*/
         }
         return null;
     }
@@ -146,7 +145,7 @@ public class URedisUtil {
             redisTemplate.delete(key);
             return true;
         } catch (Throwable t) {
-            LOGGER.error("获取缓存失败key[" + key + ", error[" + t + "]");
+            /*LOGGER.error("获取缓存失败key[" + key + ", error[" + t + "]");*/
         }
         return false;
     }
@@ -167,7 +166,7 @@ public class URedisUtil {
             if (time > 0) redisTemplate.expire(key, time, TimeUnit.SECONDS);
             return true;
         } catch (Throwable t) {
-            LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);
+            /*LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);*/
         }
         return false;
     }
@@ -199,7 +198,7 @@ public class URedisUtil {
             if (time > 0) redisTemplate.expire(key, time, TimeUnit.SECONDS);
             return true;
         } catch (Throwable t) {
-            LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);
+            /*LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);*/
         }
         return false;
     }
@@ -226,7 +225,7 @@ public class URedisUtil {
             SetOperations<String, String> setOps = redisTemplate.opsForSet();
             return setOps.members(CServiceContext.KEY_PREFIX_SET + k);
         } catch (Throwable t) {
-            LOGGER.error("获取set缓存失败key[" + CServiceContext.KEY_PREFIX_SET + k + ", error[" + t + "]");
+            /*LOGGER.error("获取set缓存失败key[" + CServiceContext.KEY_PREFIX_SET + k + ", error[" + t + "]");*/
         }
         return null;
     }
@@ -247,7 +246,7 @@ public class URedisUtil {
             if (time > 0) redisTemplate.expire(key, time, TimeUnit.SECONDS);
             return true;
         } catch (Throwable t) {
-            LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);
+            /*LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);*/
         }
         return false;
     }
@@ -279,7 +278,7 @@ public class URedisUtil {
             if (time > 0) redisTemplate.expire(key, time, TimeUnit.SECONDS);
             return true;
         } catch (Throwable t) {
-            LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);
+           /* LOGGER.error("缓存[" + key + "]失败, value[" + v + "]", t);*/
         }
         return false;
     }
@@ -308,7 +307,7 @@ public class URedisUtil {
             ListOperations<String, String> listOps = redisTemplate.opsForList();
             return listOps.range(CServiceContext.KEY_PREFIX_LIST + k, start, end);
         } catch (Throwable t) {
-            LOGGER.error("获取list缓存失败key[" + CServiceContext.KEY_PREFIX_LIST + k + ", error[" + t + "]");
+            /*LOGGER.error("获取list缓存失败key[" + CServiceContext.KEY_PREFIX_LIST + k + ", error[" + t + "]");*/
         }
         return null;
     }
@@ -324,7 +323,7 @@ public class URedisUtil {
             ListOperations<String, String> listOps = redisTemplate.opsForList();
             return listOps.size(CServiceContext.KEY_PREFIX_LIST + k);
         } catch (Throwable t) {
-            LOGGER.error("获取list长度失败key[" + CServiceContext.KEY_PREFIX_LIST + k + "], error[" + t + "]");
+            /*LOGGER.error("获取list长度失败key[" + CServiceContext.KEY_PREFIX_LIST + k + "], error[" + t + "]");*/
         }
         return 0;
     }
@@ -340,7 +339,7 @@ public class URedisUtil {
         try {
             return listOps.size(CServiceContext.KEY_PREFIX_LIST + k);
         } catch (Throwable t) {
-            LOGGER.error("获取list长度失败key[" + CServiceContext.KEY_PREFIX_LIST + k + "], error[" + t + "]");
+            /*LOGGER.error("获取list长度失败key[" + CServiceContext.KEY_PREFIX_LIST + k + "], error[" + t + "]");*/
         }
         return 0;
     }
@@ -358,7 +357,7 @@ public class URedisUtil {
             listOps.rightPop(CServiceContext.KEY_PREFIX_LIST + k);
             return true;
         } catch (Throwable t) {
-            LOGGER.error("移除list缓存失败key[" + CServiceContext.KEY_PREFIX_LIST + k + ", error[" + t + "]");
+            /*LOGGER.error("移除list缓存失败key[" + CServiceContext.KEY_PREFIX_LIST + k + ", error[" + t + "]");*/
         }
         return false;
     }
